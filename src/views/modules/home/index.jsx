@@ -26,21 +26,22 @@ export default function Home() {
         <PostingForm />
         <hr className="my-6" />
         <div className="flex flex-col gap-6">
-          {
-            status === "loading" ? 
+          {status === "loading" ? (
             <>
-              <SkeletonLoading/>
-              <SkeletonLoading/>
-              <SkeletonLoading/>
-              <SkeletonLoading/>
+              <SkeletonLoading />
+              <SkeletonLoading />
+              <SkeletonLoading />
+              <SkeletonLoading />
             </>
-            :
+          ) : (
             data.map((val, idx) => {
               return (
-                <PostCard {...val}/>
+                <Link to={`/post/` + val.id}>
+                  <PostCard {...val} />
+                </Link>
               );
             })
-          }
+          )}
         </div>
       </div>
 

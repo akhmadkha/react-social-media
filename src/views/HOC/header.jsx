@@ -43,7 +43,7 @@ export default function Header() {
     }
   }
   return (
-    <div className="w-full border-b fixed z-50 bg-primary-content">
+    <div className="w-full border-b fixed z-50 bg-primary-content" style={{maxHeight: "4.2rem"}}>
       <div class="navbar max-w-4xl mx-auto bg-base-100">
         <div class="navbar-start">
           <a class="btn btn-ghost normal-case text-xl">Socialmedia</a>

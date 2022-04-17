@@ -12,9 +12,17 @@ export default function TabAlbums(props) {
     <div className="mb-20">
       {showPhoto ? (
         <div>
-          <div>
+          <div
+          className="bg-white z-30 p-6 pb-1 mb-2 rounded-lg"
+            style={{
+              position: "sticky",
+              top: "4rem",
+            }}
+          >
             <p>Menampilkan foto untuk album</p>
-            <h1 className="text-3xl font-bold text-primary">{albumSelected?.title}</h1>
+            <h1 className="text-3xl font-bold text-primary">
+              {albumSelected?.title}
+            </h1>
             <button
               onClick={() => setshowPhoto(false)}
               className="btn my-2 btn-ghost gap-2"
@@ -23,7 +31,7 @@ export default function TabAlbums(props) {
               Kembali
             </button>
           </div>
-          <TabPhotos albumId={albumSelected.id ?? 0}/>
+          <TabPhotos albumId={albumSelected.id ?? 0} />
         </div>
       ) : (
         <div class="grid grid-cols-4 gap-4">
@@ -33,15 +41,14 @@ export default function TabAlbums(props) {
                   <button
                     onClick={() => {
                       setshowPhoto(true);
-                      setalbumSelected(val)
+                      setalbumSelected(val);
                     }}
                     className="cursor-pointer border rounded-lg overflow-hidden max-h-64 min-h-16"
                   >
                     <div
                       class="hero h-full"
                       style={{
-                        backgroundImage:
-                          `url(https://api.lorem.space/image/fashion?hash=3379${val.id})`,
+                        backgroundImage: `url(https://api.lorem.space/image/fashion?hash=3379${val.id})`,
                       }}
                     >
                       <div class="hero-overlay bg-opacity-60"></div>
