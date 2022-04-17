@@ -7,8 +7,10 @@ export default function MainLayout(props) {
   return (
     <>
       <Header />
-      <div style={{ minHeight: "100vh" }}>
-        <Outlet />
+      <div className="bg-neutral-content" style={{ minHeight: "100vh" }}>
+        <div className="max-w-4xl mx-auto">
+          <Outlet />
+        </div>
       </div>
       <Footer />
     </>

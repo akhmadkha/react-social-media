@@ -15,11 +15,16 @@ export default function AppRoutes() {
         {
           routes.map((val, idx) => {
             return (
-              <Route key={idx} index element={<val.component />} />
+              <Route key={idx} index={val.index} path={val.path} element={<val.component />} />
             )
           })
         }
       </Route>
+      <Route path='*' element={
+        <div>
+          Notfound
+        </div>
+      } />
     </Routes>
   </BrowserRouter>
   )

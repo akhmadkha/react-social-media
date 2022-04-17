@@ -1,8 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import {
+  HomeIcon,
+  UsersIcon,
+  ChatIcon,
+  BellIcon,
+} from "@heroicons/react/outline";
+import { useLocation } from 'react-router-dom';
 
+const menu = [
+  {
+    icon: HomeIcon,
+    path: "/",
+  },
+  {
+    icon: UsersIcon,
+    path: "/users",
+  },
+  {
+    icon: ChatIcon,
+    path: "/chat",
+  },
+];
 export default function Header() {
-  
-
+  const location = useLocation()
+  React.useEffect(() => {
+    console.log(process.env.REACT_APP_API_URL)
+  }, [location]);
   function changeTheme(e) {
     const setDark = () => {
       localStorage.setItem("theme", "myDark");
@@ -13,50 +37,30 @@ export default function Header() {
       document.documentElement.setAttribute("data-theme", "myLight");
     };
     if (e) {
-      setDark()
-    } else{
-      setLight()
+      setDark();
+    } else {
+      setLight();
     }
   }
   return (
-    <div className="w-full border-b px-32 fixed z-50 bg-primary-content">
-      <div class="navbar bg-base-100">
+    <div className="w-full border-b fixed z-50 bg-primary-content">
+      <div class="navbar max-w-4xl mx-auto bg-base-100">
         <div class="navbar-start">
           <a class="btn btn-ghost normal-case text-xl">Socialmedia</a>
         </div>
-        <div class="navbar-center">
-          <button class="btn btn-ghost btn-circle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </button>
+        <div class="navbar-center gap-4">
+          {menu.map((val, idx) => {
+            return (
+              <Link to={val.path}>
+                <button className={`btn ${val.path === location.pathname ? "btn-primary" : "btn-ghost"} btn-circle`}>
+                  <val.icon className="h-5 w-5" />
+                </button>
+              </Link>
+            );
+          })}
           <button class="btn btn-ghost btn-circle">
             <div class="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                />
-              </svg>
+              <BellIcon className="h-5 w-5" />
               <span class="badge badge-xs badge-primary indicator-item"></span>
             </div>
           </button>
@@ -64,7 +68,10 @@ export default function Header() {
         <div class="navbar-end">
           <div className="mx-4">
             <label class="swap swap-rotate">
-              <input type="checkbox" onChange={(e) => changeTheme(e.target.checked)}/>
+              <input
+                type="checkbox"
+                onChange={(e) => changeTheme(e.target.checked)}
+              />
               <svg
                 class="swap-on fill-current w-5 h-5"
                 xmlns="http://www.w3.org/2000/svg"
