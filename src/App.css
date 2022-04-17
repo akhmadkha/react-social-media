@@ -30,6 +30,10 @@
   border
 } */
 
+.modal{
+  backdrop-filter: blur(4px);
+}
+
 @keyframes App-logo-float {
   0% {
     transform: translateY(0);

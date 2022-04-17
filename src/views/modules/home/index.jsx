@@ -1,28 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import HomeRightbar from "../../components/home_rightbar";
 import { AnnotationIcon } from "@heroicons/react/outline";
+import { useAlert } from "react-alert";
+import { useSelector, useDispatch } from "react-redux";
+import PostingForm from "../../components/posting_form";
+import { dataPosts } from "../../../app/reducer/post_reducer";
 
 export default function Home() {
+  const alert = useAlert();
+  const { data } = useSelector(dataPosts);
+  useEffect(() => {
+    console.log(data);
+  }, []);
+  
   return (
     <div className="pt-20 flex gap-4">
       <div className="flex flex-col flex-1">
-        <div className="border p-4 rounded-lg">
-          <div className="flex gap-4 items-center">
-            <div className="avatar">
-              <div class="w-10 h-10 rounded-full">
-                <img src="https://api.lorem.space/image/face?hash=33791" />
-              </div>
-            </div>
-            <div className="flex-1">
-              <input
-                type="text"
-                placeholder="Apa yang anda pikirkan?"
-                class="input w-full bg-secondary-content"
-              />
-            </div>
-          </div>
-        </div>
+        <PostingForm />
         <hr className="my-6" />
         <div className="flex flex-col gap-6">
           <div className="border p-4 rounded-lg hover:border-primary">
@@ -35,7 +30,9 @@ export default function Home() {
               <div className="flex-1 flex flex-col gap-6">
                 <div>
                   <Link to="">
-                    <h5 className="text-sm text-primary font-semibold">User 01</h5>
+                    <h5 className="text-sm text-primary font-semibold">
+                      User 01
+                    </h5>
                   </Link>
                   <Link to="">
                     <h3 className="text-xl font-semibold">
