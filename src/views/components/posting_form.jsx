@@ -4,31 +4,36 @@ import { useAlert } from "react-alert";
 import { submitPost } from "../../app/api/posts_api";
 import { useDispatch } from "react-redux";
 import {create} from "../../app/reducer/post_reducer"
+
 export default function PostingForm() {
+  const dispatch = useDispatch()
   const alert = useAlert();
   const [loading, setloading] = useState(false);
+
   function submit(e) {
     e.preventDefault();
     setloading(true);
     const componentModal = document.getElementById("modal-add-post");
     let judul = e.target.judul.value;
     let isi = e.target.isi.value;
-    const body = JSON.stringify({
+    const body = {
       title: judul,
       body: isi,
       userId: 1,
-    });
-    
-    // submitPost(body)
-    //   .then((res) => {
-    //     setloading(false);
-    //     console.log(res);
-    //     componentModal.classList.remove("modal-open");
-    //     alert.show("Berhasil posting");
-    //   })
-    //   .catch((err) => {
-    //     setloading(false);
-    //   });
+    }
+
+    submitPost(JSON.stringify(body))
+      .then((res) => {
+        dispatch(create({data: body}))
+        setloading(false);
+        console.log(res);
+        componentModal.classList.remove("modal-open");
+        alert.show("Berhasil posting");
+      })
+      .catch((err) => {
+        setloading(false);
+        alert.show("Gagal posting");
+      });
   }
   function switchModal(params) {
     const component = document.getElementById("modal-add-post");
