@@ -17,3 +17,12 @@ export const submitPost = async (body) => {
     throw error
   }
 }
+
+export const getPostUser = async (idUser) => {
+  try {
+    const response = await axios.get("posts?userId=" + idUser)
+    return response
+  } catch (error) {
+    throw error
+  }
+}

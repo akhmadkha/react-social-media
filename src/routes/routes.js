@@ -1,5 +1,6 @@
 import Home from "../views/modules/home";
 import Users from "../views/modules/users";
+import UserDetail from "../views/modules/users/user_detail";
 
 const routes = [
   {
@@ -15,6 +16,13 @@ const routes = [
     exact: true,
     index: false,
     component: Users
+  },
+  {
+    name: "Users",
+    path: "users/:idUser",
+    exact: true,
+    index: false,
+    component: UserDetail
   }
 ]
 

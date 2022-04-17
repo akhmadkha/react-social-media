@@ -8,3 +8,12 @@ export const getUsers = async () => {
     throw error
   }
 }
+
+export const getDetailUsers = async (params) => {
+  try {
+    const response = await axios.get("users/" + params)
+    return response
+  } catch (error) {
+    throw error
+  }
+}

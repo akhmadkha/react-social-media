@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getUsers } from "../../../app/api/users_api";
 
 export default function Users() {
@@ -46,20 +47,24 @@ export default function Users() {
         <div class="grid grid-cols-2 gap-4">
           {dataUser.map((val, idx) => {
             return (
-              <div key={idx} className="flex gap-4 cursor-pointer border hover:border-primary rounded-lg shadow p-4">
-                <div className="avatar">
-                  <div class="w-10 h-10 rounded-full">
-                    <img src={`https://api.lorem.space/image/face?hash=3379${val.id}`} />
+              <Link key={idx} to={"/users/" + val.id}>
+                <div className="flex gap-4 cursor-pointer border hover:border-primary rounded-lg shadow p-4">
+                  <div className="avatar">
+                    <div class="w-10 h-10 rounded-full">
+                      <img
+                        src={`https://api.lorem.space/image/face?hash=3379${val.id}`}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-1 flex-col">
+                    <p>@{val.username}</p>
+                    <h1 className="text-lg font-semibold text-primary">
+                      {val.name}
+                    </h1>
+                    <p>{val.email}</p>
                   </div>
                 </div>
-                <div className="flex flex-1 flex-col">
-                  <p>@{val.username}</p>
-                  <h1 className="text-lg font-semibold text-primary">
-                    {val.name}
-                  </h1>
-                  <p>{val.email}</p>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </div>
