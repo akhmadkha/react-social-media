@@ -23,13 +23,19 @@ export const postSlice = createSlice({
   reducers: {
     create: (state, action) => {
       const newData = action.payload.data
-      state.data = [...state.data, newData]
+      newData.id = new Date().valueOf()
+      state.data = [newData, ...state.data]
     },
     update: (state, action) => {
-      state.data = []
+      const payload = action.payload.data
+      const idx = state.data.findIndex(x => x.id === payload.id)
+      state.data[idx].title = payload.newTitle
+      state.data[idx].body = payload.newBody
     },
-    delete: (state, action) => {
-      state.data = []
+    deletePost: (state, action) => {
+      let payload = action.payload.data
+      let newData = state.data.filter(x => x.id !== payload.id)
+      state.data = newData
     },
   },
   extraReducers: (builder) => {
@@ -44,7 +50,7 @@ export const postSlice = createSlice({
   }
 })
 
-export const {create} = postSlice.actions
+export const {create, update, deletePost} = postSlice.actions
 
 export const dataPosts = createSelector(
   (state) => ({

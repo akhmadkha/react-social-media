@@ -19,7 +19,7 @@ export default function PostingForm() {
     const body = {
       title: judul,
       body: isi,
-      userId: 1,
+      userId: 2020,
     }
 
     submitPost(JSON.stringify(body))
@@ -47,7 +47,7 @@ export default function PostingForm() {
       <div className="flex gap-4 items-center">
         <div className="avatar">
           <div class="w-10 h-10 rounded-full">
-            <img src="https://api.lorem.space/image/face?hash=33791" />
+            <img src="https://api.lorem.space/image/face?hash=33792020" />
           </div>
         </div>
         <div className="flex-1">

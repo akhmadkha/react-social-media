@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -22,14 +21,15 @@ export default function CommentBox(props) {
 
   function renderComment(params) {
     let commentData = params.find((x) => x.postId.toString() === postId);
+    console.log(commentData);
     if (commentData) {
-      return commentData.comments.map((val, idx) => {
-        return (
-          <CommentBubble key={idx} {...val}/>
-        );
-      });
-    } else {
-      return <div className="min-h-screen">Tidak ada komen</div>;
+      if (commentData.comments.length > 0) {
+        return commentData.comments.map((val, idx) => {
+          return <CommentBubble key={idx} {...val} />;
+        });
+      } else {
+        return <div className="">Tidak ada komen</div>;
+      }
     }
   }
 
@@ -39,12 +39,16 @@ export default function CommentBox(props) {
         <div className="py-4 px-2 border-b">
           <h1>Komentar</h1>
         </div>
-        <div id="commentWrapper" className="flex-1 gap-6 pb-80 overflow-y-scroll" style={{maxHeight: "80vh"}}>
+        <div
+          id="commentWrapper"
+          className="flex-1 gap-6 pb-80 overflow-y-scroll"
+          style={{ maxHeight: "80vh", minHeight: "80vh" }}
+        >
           {renderComment(data)}
         </div>
       </div>
       <div className="py-4 sticky bottom-0 bg-white px-2 border-t">
-        <CommentCreate postId={postId}/>
+        <CommentCreate postId={postId} />
       </div>
     </div>
   );

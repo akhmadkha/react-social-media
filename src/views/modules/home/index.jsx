@@ -35,11 +35,15 @@ export default function Home() {
             </>
           ) : (
             data.map((val, idx) => {
-              return (
-                <Link to={`/post/` + val.id}>
-                  <PostCard {...val} />
-                </Link>
-              );
+              if (val.userId === 2020) {
+                return <PostCard {...val} />;
+              } else {
+                return (
+                  <Link to={`/post/` + val.id}>
+                    <PostCard {...val} />
+                  </Link>
+                );
+              }
             })
           )}
         </div>

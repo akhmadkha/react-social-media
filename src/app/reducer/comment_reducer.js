@@ -53,6 +53,12 @@ export const commentSlice = createSlice({
       let newComment = commentPost.comments.filter(x => x.id !== newData.id)
       state.data[idxPost].comments = newComment
     },
+    deletePostComment: (state,action) => {
+      const payload = action.payload.data
+      const newData = state.data.filter(x => x.postId !== payload.postId) 
+
+      state.data = newData
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -70,7 +76,7 @@ export const commentSlice = createSlice({
   }
 })
 
-export const {create, update, deleteComment} = commentSlice.actions
+export const {create, update, deleteComment, deletePostComment} = commentSlice.actions
 
 export const dataComment = createSelector(
   (state) => ({
