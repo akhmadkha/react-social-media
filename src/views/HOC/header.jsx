@@ -6,7 +6,7 @@ import {
   ChatIcon,
   BellIcon,
 } from "@heroicons/react/outline";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const menu = [
   {
@@ -23,9 +23,9 @@ const menu = [
   },
 ];
 export default function Header() {
-  const location = useLocation()
+  const location = useLocation();
   React.useEffect(() => {
-    console.log(process.env.REACT_APP_API_URL)
+    console.log(process.env.REACT_APP_API_URL);
   }, [location]);
   function changeTheme(e) {
     const setDark = () => {
@@ -43,7 +43,10 @@ export default function Header() {
     }
   }
   return (
-    <div className="w-full border-b fixed z-50 bg-primary-content" style={{maxHeight: "4.2rem"}}>
+    <div
+      className="w-full border-b fixed z-50 bg-primary-content"
+      style={{ maxHeight: "4.2rem" }}
+    >
       <div class="navbar max-w-4xl mx-auto bg-base-100">
         <div class="navbar-start">
           <a class="btn btn-ghost normal-case text-xl">Socialmedia</a>
@@ -52,7 +55,11 @@ export default function Header() {
           {menu.map((val, idx) => {
             return (
               <Link to={val.path}>
-                <button className={`btn ${val.path === location.pathname ? "btn-primary" : "btn-ghost"} btn-circle`}>
+                <button
+                  className={`btn ${
+                    val.path === location.pathname ? "btn-primary" : "btn-ghost"
+                  } btn-circle`}
+                >
                   <val.icon className="h-5 w-5" />
                 </button>
               </Link>
@@ -66,7 +73,7 @@ export default function Header() {
           </button>
         </div>
         <div class="navbar-end">
-          <div className="mx-4">
+          {/* <div className="mx-4">
             <label class="swap swap-rotate">
               <input
                 type="checkbox"
@@ -88,12 +95,17 @@ export default function Header() {
                 <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
               </svg>
             </label>
-          </div>
+          </div> */}
           <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full">
-                <img src="https://api.lorem.space/image/face?hash=33792020" />
-              </div>
+            <label tabindex="0">
+              <button class="gap-2 btn btn-ghost">
+                <div className="avatar">
+                  <div class="w-10 rounded-full">
+                    <img src="https://api.lorem.space/image/face?hash=33792020" />
+                  </div>
+                </div>
+                <p className="truncate">User root</p>
+              </button>
             </label>
             <ul
               tabindex="0"

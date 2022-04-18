@@ -3,34 +3,42 @@ import { PaperAirplaneIcon } from "@heroicons/react/outline";
 import { AnnotationIcon, DotsHorizontalIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {update} from "../../app/reducer/post_reducer";
+import { update, deletePost } from "../../app/reducer/post_reducer";
 import { useAlert } from "react-alert";
 
 export default function PostCard(props) {
   const { userId, id, title, body } = props;
   const [loadingUpdate, setloadingUpdate] = useState(false);
-  const dispatch = useDispatch()
-  const alert = useAlert()
+  const dispatch = useDispatch();
+  const alert = useAlert();
 
-  function switchModalEdit(params) {
-    if (params) {
-      document.getElementById(`modalEditPost${id}`).classList.add("modal-open");
+  function switchModal(id, action) {
+    if (action) {
+      document.getElementById(id).classList.add("modal-open");
     } else {
-      document
-        .getElementById(`modalEditPost${id}`)
-        .classList.remove("modal-open");
+      document.getElementById(id).classList.remove("modal-open");
     }
   }
 
   function onUpdate(e) {
-    let newTitle = e.target.title.value
-    let newBody = e.target.body.value
+    let newTitle = e.target.title.value;
+    let newBody = e.target.body.value;
     const payload = {
-      id, userId, newTitle, newBody
-    }
-    dispatch(update({data: payload}))
-    switchModalEdit(false)
+      id,
+      userId,
+      newTitle,
+      newBody,
+    };
+    dispatch(update({ data: payload }));
+    switchModal(`modalEditPost${id}`, false);
     alert.show("Berhasil edit psotingan");
+  }
+
+  function onDelete(params) {
+    const payload = { id };
+    dispatch(deletePost({ data: payload }));
+    switchModal(`modalDeletePost${id}`, false);
+    alert.show("Berhasil hapus psotingan");
   }
   return (
     <>
@@ -43,7 +51,7 @@ export default function PostCard(props) {
               className="py-6"
               onSubmit={(e) => {
                 e.preventDefault();
-                onUpdate(e)
+                onUpdate(e);
               }}
             >
               <div class="form-control w-full">
@@ -74,7 +82,7 @@ export default function PostCard(props) {
               </div>
               <div className="pt-4 flex items-center gap-2">
                 <label
-                  onClick={() => switchModalEdit(false)}
+                  onClick={() => switchModal(`modalEditPost${id}`, false)}
                   for="my-modal"
                   class="btn"
                 >
@@ -101,6 +109,30 @@ export default function PostCard(props) {
         </div>
       </div>
       {/* modal hapus */}
+      <div id={`modalDeletePost${id}`} class="modal">
+        <div class="modal-box">
+          <h3 class="font-bold text-lg">Konfirmasi</h3>
+          <p class="py-4">Klik lanjut untuk menghapus komentar</p>
+          <div class="modal-action">
+            <label
+              onClick={() => switchModal(`modalDeletePost${id}`, false)}
+              for="my-modal"
+              class="btn"
+            >
+              Batal
+            </label>
+            <label
+              onClick={() => {
+                onDelete();
+              }}
+              for="my-modal"
+              class="btn btn-error"
+            >
+              Lanjut
+            </label>
+          </div>
+        </div>
+      </div>
       <div className="border p-4 rounded-lg hover:border-primary">
         <div className="flex gap-4 items-start">
           <div className="avatar">
@@ -117,7 +149,7 @@ export default function PostCard(props) {
                   <Link to={`/users/` + userId}>
                     <h5 className="text-sm text-primary font-semibold">Anda</h5>
                   </Link>
-                  <h3 className="text-xl font-semibold">{title}</h3>
+                  <Link to={`/post/` + id} className="text-xl font-semibold">{title}</Link>
                 </div>
                 <div class="dropdown dropdown-end">
                   <label tabindex="0" class="btn btn-sm btn-ghost m-1">
@@ -130,7 +162,7 @@ export default function PostCard(props) {
                     <li>
                       <button
                         onClick={() => {
-                          switchModalEdit(true);
+                          switchModal(`modalEditPost${id}`, true);
                         }}
                         className="btn btn-sm btn-ghost"
                       >
@@ -138,7 +170,14 @@ export default function PostCard(props) {
                       </button>
                     </li>
                     <li>
-                      <button className="btn btn-sm btn-error">Hapus</button>
+                      <button
+                        onClick={() => {
+                          switchModal(`modalDeletePost${id}`, true);
+                        }}
+                        className="btn btn-sm btn-error"
+                      >
+                        Hapus
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -153,12 +192,12 @@ export default function PostCard(props) {
                 <h3 className="text-xl font-semibold">{title}</h3>
               </div>
             )}
-            <p>{body}</p>
+            <Link to={`/post/` + id}>{body}</Link>
 
-            <button className="btn btn-ghost flex items-center gap-4">
+            <Link to={`/post/` + id} className="btn btn-ghost flex items-center gap-4">
               <AnnotationIcon className="h-5 w-5 text-primary" />
               <p>View all comment</p>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
