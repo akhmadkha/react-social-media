@@ -25,7 +25,6 @@ const menu = [
 export default function Header() {
   const location = useLocation();
   React.useEffect(() => {
-    console.log(process.env.REACT_APP_API_URL);
   }, [location]);
   // function changeTheme(e) {
   //   const setDark = () => {
@@ -47,15 +46,15 @@ export default function Header() {
       className="w-full border-b fixed z-50 bg-primary-content"
       style={{ maxHeight: "4.2rem" }}
     >
-      <div class="navbar max-w-4xl mx-auto bg-base-100">
-        <div class="navbar-start">
-          <button class="hidden md:block btn btn-ghost normal-case text-xl">Socialmedia</button>
-          <button class="block md:hidden btn btn-ghost normal-case text-xl">S</button>
+      <div className="navbar max-w-4xl mx-auto bg-base-100">
+        <div className="navbar-start">
+          <button className="hidden md:block btn btn-ghost normal-case text-xl">Socialmedia</button>
+          <button className="block md:hidden btn btn-ghost normal-case text-xl">S</button>
         </div>
-        <div class="navbar-center gap-4">
+        <div className="navbar-center gap-4">
           {menu.map((val, idx) => {
             return (
-              <Link to={val.path}>
+              <Link key={idx} to={val.path}>
                 <button
                   className={`btn ${
                     val.path === location.pathname ? "btn-primary" : "btn-ghost"
@@ -66,22 +65,22 @@ export default function Header() {
               </Link>
             );
           })}
-          <button class="btn btn-ghost btn-circle">
-            <div class="indicator">
+          <button className="btn btn-ghost btn-circle">
+            <div className="indicator">
               <BellIcon className="h-5 w-5" />
-              <span class="badge badge-xs badge-primary indicator-item"></span>
+              <span className="badge badge-xs badge-primary indicator-item"></span>
             </div>
           </button>
         </div>
-        <div class="navbar-end">
+        <div className="navbar-end">
           {/* <div className="mx-4">
-            <label class="swap swap-rotate">
+            <label className="swap swap-rotate">
               <input
                 type="checkbox"
                 onChange={(e) => changeTheme(e.target.checked)}
               />
               <svg
-                class="swap-on fill-current w-5 h-5"
+                className="swap-on fill-current w-5 h-5"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
@@ -89,7 +88,7 @@ export default function Header() {
               </svg>
 
               <svg
-                class="swap-off fill-current w-5 h-5"
+                className="swap-off fill-current w-5 h-5"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
@@ -97,11 +96,11 @@ export default function Header() {
               </svg>
             </label>
           </div> */}
-          <div class="dropdown dropdown-end">
-            <label tabindex="0">
-              <button class="gap-2 btn btn-ghost">
+          <div className="dropdown dropdown-end">
+            <label tabIndex="0">
+              <button className="gap-2 btn btn-ghost">
                 <div className="avatar">
-                  <div class="w-10 rounded-full">
+                  <div className="w-10 rounded-full">
                     <img alt="socialmedia-asset" src="https://api.lorem.space/image/face?hash=33792020" />
                   </div>
                 </div>
@@ -109,13 +108,13 @@ export default function Header() {
               </button>
             </label>
             <ul
-              tabindex="0"
-              class="menu menu-compact dropdown-content mt-3 p-2 border bg-base-100 rounded-lg w-52"
+              tabIndex="0"
+              className="menu menu-compact dropdown-content mt-3 p-2 border bg-base-100 rounded-lg w-52"
             >
               <li>
-                <Link to="/users/2020" class="justify-between">
+                <Link to="/users/2020" className="justify-between">
                   Profile
-                  <span class="badge">New</span>
+                  <span className="badge">New</span>
                 </Link>
               </li>
               <li>

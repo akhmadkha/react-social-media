@@ -48,15 +48,15 @@ export default function CommentBubble(props) {
   }
   return (
     <>
-      <div id={`modalDeleteComment${id}`} class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">Konfirmasi</h3>
-          <p class="py-4">Klik lanjut untuk menghapus komentar</p>
-          <div class="modal-action">
+      <div id={`modalDeleteComment${id}`} className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Konfirmasi</h3>
+          <p className="py-4">Klik lanjut untuk menghapus komentar</p>
+          <div className="modal-action">
             <label
               onClick={() => switchModalDelete(false)}
               for="my-modal"
-              class="btn"
+              className="btn"
             >
               Batal
             </label>
@@ -65,7 +65,7 @@ export default function CommentBubble(props) {
                 onDelete()
               }}
               for="my-modal"
-              class="btn btn-error"
+              className="btn btn-error"
             >
               Lanjut
             </label>
@@ -75,7 +75,7 @@ export default function CommentBubble(props) {
 
       <div className="flex gap-2 p-1">
         <div className="avatar">
-          <div class="w-8 h-8 rounded-full">
+          <div className="w-8 h-8 rounded-full">
             <img alt="socialmedia-asset" src={`https://api.lorem.space/image/face?hash=3379${Math.floor(Math.random() * 10)}`} />
           </div>
         </div>
@@ -94,12 +94,12 @@ export default function CommentBubble(props) {
                     type="text"
                     name="namaKomentar"
                     placeholder="Nama komentar"
-                    class="input input-bordered w-full"
+                    className="input input-bordered w-full"
                     defaultValue={name}
                   />
                 </div>
                 <textarea
-                  class="textarea textarea-bordered w-full"
+                  className="textarea textarea-bordered w-full"
                   name="komentar"
                   placeholder="Ketik komentar"
                 >
@@ -125,13 +125,13 @@ export default function CommentBubble(props) {
                       <p className="text-sm">{email}</p>
                       <p className="text-primary font-bold">{name}</p>
                     </div>
-                    <div class="dropdown dropdown-end">
-                      <label tabindex="0" class="btn btn-xs">
+                    <div className="dropdown dropdown-end">
+                      <label tabIndex="0" className="btn btn-xs">
                         <DotsHorizontalIcon className="h-4 w-4" />
                       </label>
                       <ul
-                        tabindex="0"
-                        class="dropdown-content gap-2 menu p-2 shadow bg-base-100 rounded-box w-52"
+                        tabIndex="0"
+                        className="dropdown-content gap-2 menu p-2 shadow bg-base-100 rounded-box w-52"
                       >
                         <li>
                           <button

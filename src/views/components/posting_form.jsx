@@ -46,7 +46,7 @@ export default function PostingForm() {
     <div className="border p-4 rounded-lg">
       <div className="flex gap-4 items-center">
         <div className="avatar">
-          <div class="w-10 h-10 rounded-full">
+          <div className="w-10 h-10 rounded-full">
             <img alt="socialmedia-asset" src="https://api.lorem.space/image/face?hash=33792020" />
           </div>
         </div>
@@ -54,55 +54,55 @@ export default function PostingForm() {
           <button
             onClick={() => switchModal(true)}
             F
-            class="btn btn-ghost bg-secondary-content modal-button w-full"
+            className="btn btn-ghost bg-secondary-content modal-button w-full"
           >
             Apa yang anda pikirkan?
           </button>
-          <div id="modal-add-post" class="modal">
-            <div class="modal-box relative">
+          <div id="modal-add-post" className="modal">
+            <div className="modal-box relative">
               <button
                 onClick={() => switchModal(false)}
-                class="btn btn-sm btn-circle absolute right-2 top-2"
+                className="btn btn-sm btn-circle absolute right-2 top-2"
               >
                 ✕
               </button>
-              <h3 class="text-lg font-bold">Posting sesuatu</h3>
+              <h3 className="text-lg font-bold">Posting sesuatu</h3>
               <form
                 className="py-6"
                 onSubmit={(e) => {
                   submit(e);
                 }}
               >
-                <div class="form-control w-full">
-                  <label class="label">
-                    <span class="label-text">Judul</span>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Judul</span>
                   </label>
                   <input
                     type="text"
                     name="judul"
                     required
                     placeholder="Judul Postingan"
-                    class="input input-bordered w-full"
+                    className="input input-bordered w-full"
                   />
                 </div>
-                <div class="form-control w-full">
-                  <label class="label">
-                    <span class="label-text">Isi</span>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Isi</span>
                   </label>
                   <textarea
                     name="isi"
                     required
-                    class="textarea textarea-bordered h-24"
+                    className="textarea textarea-bordered h-24"
                     placeholder="Isi Postingan"
                   ></textarea>
                 </div>
                 <div className="pt-4">
                   {loading ? (
-                    <button type="button" disabled class="btn loading">
+                    <button type="button" disabled className="btn loading">
                       loading
                     </button>
                   ) : (
-                    <button type="submit" class="btn gap-2">
+                    <button type="submit" className="btn gap-2">
                       <PaperAirplaneIcon className="h-5 w-5" />
                       Posting
                     </button>

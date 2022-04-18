@@ -61,19 +61,19 @@ export default function UserDetail(props) {
     <div className="pt-20">
       <div>
         <div
-          class="hero min-h-16 rounded-box overflow-hidden"
+          className="hero min-h-16 rounded-box overflow-hidden"
           style={{
             placeItems: "unset",
             backgroundImage:
               "url(https://api.lorem.space/image/furniture?w=1000&h=800)",
           }}
         >
-          <div class="hero-overlay bg-opacity-60"></div>
-          <div class="justify-start hero-content text-neutral-content">
-            <div class="max-w-md pb-36">
+          <div className="hero-overlay bg-opacity-60"></div>
+          <div className="justify-start hero-content text-neutral-content">
+            <div className="max-w-md pb-36">
               <button
                 onClick={() => window.history.back()}
-                class="btn bg-white border-none text-gray-500 hover:bg-gray-200 gap-2"
+                className="btn bg-white border-none text-gray-500 hover:bg-gray-200 gap-2"
               >
                 <ArrowLeftIcon className="h-5 w-5" />
                 Kembali
@@ -85,7 +85,7 @@ export default function UserDetail(props) {
           <div className="p-4 border bg-white rounded-box flex">
             <div>
               <div className="avatar">
-                <div class="w-24 h-24 rounded-full">
+                <div className="w-24 h-24 rounded-full">
                   <img alt="socialmedia-asset" src={`https://api.lorem.space/image/face?hash=3379${idUser}`} />
                 </div>
               </div>
@@ -116,11 +116,11 @@ export default function UserDetail(props) {
       {
         parseInt(idUser) !== 2020 ? <div className="w-full">
         <div className="flex justify-center items-center">
-          <div class="tabs">
+          <div className="tabs">
             {dataTab.map((val, idx) => {
               return (
                 <button
-                  key={val}
+                  key={idx}
                   onClick={() => settabActive(val.id)}
                   class={`tab tab-bordered ${
                     val.id === tabActive ? "tab-active" : ""

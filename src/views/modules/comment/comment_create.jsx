@@ -25,12 +25,12 @@ export default function CommentCreate(props) {
     objDiv.scrollTop = objDiv.scrollHeight;
   }
   return (
-    <div tabindex="0" class="collapse collapse-arrow">
-      <input type="checkbox" class="peer" />
-      <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content rounded-lg">
+    <div tabIndex="0" className="collapse collapse-arrow">
+      <input type="checkbox" className="peer" />
+      <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content rounded-lg">
         Buat komentar
       </div>
-      <div class="collapse-content bg-primary peer-checked:bg-white">
+      <div className="collapse-content bg-primary peer-checked:bg-white">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -43,10 +43,10 @@ export default function CommentCreate(props) {
               type="text"
               name="namaKomentar"
               placeholder="Nama komentar"
-              class="input input-bordered w-full"
+              className="input input-bordered w-full"
             />
             <textarea
-              class="textarea textarea-bordered w-full"
+              className="textarea textarea-bordered w-full"
               rows={1}
               name="komentar"
               placeholder="Ketik komentar"

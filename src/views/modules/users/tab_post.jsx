@@ -12,7 +12,7 @@ export default function TabPost(props) {
           data ?
           data.map((val, idx) => {
             return(
-              <PostCard {...val}/>
+              <PostCard key={idx} {...val}/>
             )
           })
           :null

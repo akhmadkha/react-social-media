@@ -24,33 +24,33 @@ export default function Users() {
     <div className="pt-20">
       {/* <h1 className="text-lg font-semibold">Daftar Pengguna</h1> */}
       <div
-        class="hero min-h-16 rounded-box overflow-hidden"
+        className="hero min-h-16 rounded-box overflow-hidden"
         style={{
           backgroundImage:
             "url(https://api.lorem.space/image/fashion?w=1000&h=800)",
         }}
       >
-        <div class="hero-overlay bg-opacity-60"></div>
-        <div class="hero-content text-center text-neutral-content">
-          <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold">Daftar Pengguna</h1>
-            <p class="mb-5">
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-center text-neutral-content">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Daftar Pengguna</h1>
+            <p className="mb-5">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            {/* <button class="btn btn-primary">Get Started</button> */}
+            {/* <button className="btn btn-primary">Get Started</button> */}
           </div>
         </div>
       </div>
       <div className="pt-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {dataUser.map((val, idx) => {
             return (
               <Link key={idx} to={"/users/" + val.id}>
                 <div className="flex gap-4 cursor-pointer border hover:border-primary rounded-lg shadow p-4">
                   <div className="avatar">
-                    <div class="w-10 h-10 rounded-full">
+                    <div className="w-10 h-10 rounded-full">
                       <img
                       alt=""
                         src={`https://api.lorem.space/image/face?hash=3379${val.id}`}

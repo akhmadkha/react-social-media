@@ -43,9 +43,9 @@ export default function PostCard(props) {
   return (
     <>
       {/* modal edit */}
-      <div id={`modalEditPost${id}`} class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">Edit Post</h3>
+      <div id={`modalEditPost${id}`} className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Edit Post</h3>
           <div className="flex flex-col gap-2">
             <form
               className="py-6"
@@ -54,9 +54,9 @@ export default function PostCard(props) {
                 onUpdate(e);
               }}
             >
-              <div class="form-control w-full">
-                <label class="label">
-                  <span class="label-text">Judul</span>
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Judul</span>
                 </label>
                 <input
                   type="text"
@@ -64,17 +64,17 @@ export default function PostCard(props) {
                   defaultValue={title}
                   required
                   placeholder="Judul Postingan"
-                  class="input input-bordered w-full"
+                  className="input input-bordered w-full"
                 />
               </div>
-              <div class="form-control w-full">
-                <label class="label">
-                  <span class="label-text">Isi</span>
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Isi</span>
                 </label>
                 <textarea
                   name="body"
                   required
-                  class="textarea textarea-bordered h-24"
+                  className="textarea textarea-bordered h-24"
                   placeholder="Isi Postingan"
                 >
                   {body}
@@ -84,16 +84,16 @@ export default function PostCard(props) {
                 <label
                   onClick={() => switchModal(`modalEditPost${id}`, false)}
                   for="my-modal"
-                  class="btn"
+                  className="btn"
                 >
                   Batal
                 </label>
                 {loadingUpdate ? (
-                  <button type="button" disabled class="btn loading">
+                  <button type="button" disabled className="btn loading">
                     loading
                   </button>
                 ) : (
-                  <button type="submit" class="btn gap-2 btn-primary">
+                  <button type="submit" className="btn gap-2 btn-primary">
                     <PaperAirplaneIcon className="h-5 w-5" />
                     Ubah
                   </button>
@@ -101,23 +101,23 @@ export default function PostCard(props) {
               </div>
             </form>
           </div>
-          {/* <div class="modal-action">
-            <label onClick={() => {}} for="my-modal" class="btn btn-error">
+          {/* <div className="modal-action">
+            <label onClick={() => {}} for="my-modal" className="btn btn-error">
               Lanjut
             </label>
           </div> */}
         </div>
       </div>
       {/* modal hapus */}
-      <div id={`modalDeletePost${id}`} class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">Konfirmasi</h3>
-          <p class="py-4">Klik lanjut untuk menghapus komentar</p>
-          <div class="modal-action">
+      <div id={`modalDeletePost${id}`} className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Konfirmasi</h3>
+          <p className="py-4">Klik lanjut untuk menghapus komentar</p>
+          <div className="modal-action">
             <label
               onClick={() => switchModal(`modalDeletePost${id}`, false)}
               for="my-modal"
-              class="btn"
+              className="btn"
             >
               Batal
             </label>
@@ -126,7 +126,7 @@ export default function PostCard(props) {
                 onDelete();
               }}
               for="my-modal"
-              class="btn btn-error"
+              className="btn btn-error"
             >
               Lanjut
             </label>
@@ -136,7 +136,7 @@ export default function PostCard(props) {
       <div className="border p-4 rounded-lg hover:border-primary">
         <div className="flex gap-4 items-start">
           <div className="avatar">
-            <div class="w-10 h-10 rounded-full">
+            <div className="w-10 h-10 rounded-full">
               <img
               alt=""
                 src={"https://api.lorem.space/image/face?hash=3379" + userId}
@@ -152,13 +152,13 @@ export default function PostCard(props) {
                   </Link>
                   <Link to={`/post/` + id} className="text-xl font-semibold">{title}</Link>
                 </div>
-                <div class="dropdown dropdown-end">
-                  <label tabindex="0" class="btn btn-sm btn-ghost m-1">
+                <div className="dropdown dropdown-end">
+                  <label tabIndex="0" className="btn btn-sm btn-ghost m-1">
                     <DotsHorizontalIcon className="h-5 w-5" />
                   </label>
                   <ul
-                    tabindex="0"
-                    class="dropdown-content gap-2 menu p-2 shadow bg-base-100 rounded-box w-52"
+                    tabIndex="0"
+                    className="dropdown-content gap-2 menu p-2 shadow bg-base-100 rounded-box w-52"
                   >
                     <li>
                       <button

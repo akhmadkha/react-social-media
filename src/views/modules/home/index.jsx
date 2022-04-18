@@ -33,10 +33,10 @@ export default function Home() {
           ) : (
             data.map((val, idx) => {
               if (val.userId === 2020) {
-                return <PostCard {...val} />;
+                return <PostCard key={idx} {...val} />;
               } else {
                 return (
-                  <Link to={`/post/` + val.id}>
+                  <Link key={idx} to={`/post/` + val.id}>
                     <PostCard {...val} />
                   </Link>
                 );

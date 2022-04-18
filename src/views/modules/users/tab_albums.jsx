@@ -34,11 +34,12 @@ export default function TabAlbums(props) {
           <TabPhotos albumId={albumSelected.id ?? 0} />
         </div>
       ) : (
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {data
             ? data.map((val, idx) => {
                 return (
                   <button
+                  key={idx}
                     onClick={() => {
                       setshowPhoto(true);
                       setalbumSelected(val);
@@ -46,15 +47,15 @@ export default function TabAlbums(props) {
                     className="cursor-pointer border rounded-lg overflow-hidden max-h-64 min-h-16"
                   >
                     <div
-                      class="hero h-full"
+                      className="hero h-full"
                       style={{
                         backgroundImage: `url(https://api.lorem.space/image/fashion?hash=3379${val.id})`,
                       }}
                     >
-                      <div class="hero-overlay bg-opacity-60"></div>
-                      <div class="hero-content text-white">
-                        <div class="max-w-md pt-16">
-                          <p class="">
+                      <div className="hero-overlay bg-opacity-60"></div>
+                      <div className="hero-content text-white">
+                        <div className="max-w-md pt-16">
+                          <p className="">
                             {val.title.length > 40
                               ? `${val.title.substring(0, 40)}...`
                               : val.title}

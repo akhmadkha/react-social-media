@@ -39,7 +39,7 @@ export default function Post() {
         </div>
         <div className="flex justify-center">
           <div className="avatar">
-            <div class="w-14 h-14 rounded-full">
+            <div className="w-14 h-14 rounded-full">
               <img alt="socialmedia-asset" src={`https://api.lorem.space/image/face?hash=3379${dataPost.userId ?? "1"}`} />
             </div>
           </div>
