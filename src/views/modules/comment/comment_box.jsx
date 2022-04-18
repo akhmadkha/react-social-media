@@ -21,7 +21,6 @@ export default function CommentBox(props) {
 
   function renderComment(params) {
     let commentData = params.find((x) => x.postId.toString() === postId);
-    console.log(commentData);
     if (commentData) {
       if (commentData.comments.length > 0) {
         return commentData.comments.map((val, idx) => {
