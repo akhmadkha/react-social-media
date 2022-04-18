@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { update, deletePost } from "../../app/reducer/post_reducer";
 import { useAlert } from "react-alert";
+import { deletePostComment } from "../../app/reducer/comment_reducer";
 
 export default function PostCard(props) {
   const { userId, id, title, body } = props;
@@ -37,6 +38,7 @@ export default function PostCard(props) {
   function onDelete(params) {
     const payload = { id };
     dispatch(deletePost({ data: payload }));
+    dispatch(deletePostComment({data: payload}))
     switchModal(`modalDeletePost${id}`, false);
     alert.show("Berhasil hapus psotingan");
   }
