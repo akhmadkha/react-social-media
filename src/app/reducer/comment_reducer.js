@@ -37,10 +37,21 @@ export const commentSlice = createSlice({
       // state.data = [...state.data, newData]
     },
     update: (state, action) => {
-      state.data = []
+      const newData = action.payload.data
+      let commentPost = state.data.find(x => x.postId.toString() === newData.postId)
+      let idxComent = commentPost.comments.findIndex(x => x.id === newData.id)
+      let idxPost = state.data.findIndex(x => x.postId.toString() === newData.postId)
+      commentPost.comments[idxComent].name = newData.name
+      commentPost.comments[idxComent].body = newData.body
+
+      state.data[idxPost] = commentPost
     },
-    delete: (state, action) => {
-      state.data = []
+    deleteComment: (state, action) => {
+      const newData = action.payload.data
+      let commentPost = state.data.find(x => x.postId.toString() === newData.postId)
+      let idxPost = state.data.findIndex(x => x.postId.toString() === newData.postId)
+      let newComment = commentPost.comments.filter(x => x.id !== newData.id)
+      state.data[idxPost].comments = newComment
     },
   },
   extraReducers: (builder) => {
@@ -59,7 +70,7 @@ export const commentSlice = createSlice({
   }
 })
 
-export const {create} = commentSlice.actions
+export const {create, update, deleteComment} = commentSlice.actions
 
 export const dataComment = createSelector(
   (state) => ({

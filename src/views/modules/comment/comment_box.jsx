@@ -5,6 +5,7 @@ import {
   dataComment,
   getCommentAsync,
 } from "../../../app/reducer/comment_reducer";
+import CommentBubble from "./comment_buble";
 import CommentCreate from "./comment_create";
 
 export default function CommentBox(props) {
@@ -19,33 +20,12 @@ export default function CommentBox(props) {
     }
   }, [dispatch]);
 
-  console.log(data)
-
   function renderComment(params) {
-    // console.log("bottom", data)
-    // console.log(params.find((x) => x.postId.toString() === postId))
     let commentData = params.find((x) => x.postId.toString() === postId);
     if (commentData) {
-      console.log(params.find((x) => x.postId.toString() === postId))
       return commentData.comments.map((val, idx) => {
-        console.log(val?.name)
         return (
-          <div key={idx} className="flex gap-2 p-1">
-            <div className="avatar">
-              <div class="w-8 h-8 rounded-full">
-                <img src="https://api.lorem.space/image/face?hash=33791" />
-              </div>
-            </div>
-            <div className="flex-1 border rounded-xl bg-gray-100 p-2">
-              <div className="flex justify-between items-center mb-2">
-                <div className="flex flex-col">
-                  <p className="text-sm">{val?.email}</p>
-                  <p className="text-primary font-bold">{val.name}</p>
-                </div>
-              </div>
-              <p className="text-sm">{val?.body}</p>
-            </div>
-          </div>
+          <CommentBubble key={idx} {...val}/>
         );
       });
     } else {

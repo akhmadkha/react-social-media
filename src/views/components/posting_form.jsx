@@ -26,7 +26,6 @@ export default function PostingForm() {
       .then((res) => {
         dispatch(create({data: body}))
         setloading(false);
-        console.log(res);
         componentModal.classList.remove("modal-open");
         alert.show("Berhasil posting");
       })
