@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import MainLayout from '../views/HOC/main_layout';
+import NotfoundPage from '../views/modules/notfound_page';
 import routes from './routes';
 
 export default function AppRoutes() {
@@ -21,9 +22,7 @@ export default function AppRoutes() {
         }
       </Route>
       <Route path='*' element={
-        <div>
-          Notfound
-        </div>
+        <NotfoundPage/>
       } />
     </Routes>
   </BrowserRouter>
