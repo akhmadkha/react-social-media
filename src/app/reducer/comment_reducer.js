@@ -1,16 +1,40 @@
 import { createAsyncThunk, createSlice, createSelector } from "@reduxjs/toolkit";
+import { getPostComment } from "../api/comment_api";
 
 const initialState = {
   data: [],
   status: "idle",
 }
 
-export const postSlice = createSlice({
-  name: "post",
+export const getCommentAsync = createAsyncThunk("comment/getComments", async (idPost) => {
+  try {
+    const response = await getPostComment(idPost)
+    return {
+      data: response.data,
+      postId: idPost
+    }
+  } catch (error) {
+    throw error
+  }
+})
+
+export const commentSlice = createSlice({
+  name: "comment",
   initialState,
   reducers: {
     create: (state, action) => {
-      state.data = []
+      const newData = action.payload.data
+      let comment = state.data.find(x => x.postId.toString() === newData.postId)
+      let idx = state.data.findIndex(x => x.postId.toString() === newData.postId)
+
+      if (comment) {
+        comment.comments.push(newData)
+        state.data[idx] = comment
+      } else {
+        let temp = {postId: newData.postId, comments: [newData] ?? []}
+        state.data = [...state.data, temp]
+      }
+      // state.data = [...state.data, newData]
     },
     update: (state, action) => {
       state.data = []
@@ -18,15 +42,29 @@ export const postSlice = createSlice({
     delete: (state, action) => {
       state.data = []
     },
+  },
+  extraReducers: (builder) => {
+    builder
+    .addCase(getCommentAsync.pending, (state) => {
+      state.status = "loading"
+    })
+    .addCase(getCommentAsync.fulfilled, (state, action) => {
+      let existed = state.data.find(x => x.postId.toString() === action.payload.postId)
+      let payload = {postId: action.payload.postId, comments: action.payload.data ?? []}
+      state.status = "idle"
+      if (!existed) {
+        state.data = [...state.data, payload]
+      }
+    })
   }
 })
 
-export const {create, update, delete} = postSlice.actions
+export const {create} = commentSlice.actions
 
-export const dataPosts = createSelector(
+export const dataComment = createSelector(
   (state) => ({
-    data: state.post.data
+    data: state.comment.data
   }), (state) => state
 )
 
-export default postSlice.reducer
+export default commentSlice.reducer

@@ -9,10 +9,8 @@ const initialState = {
 export const getPostAsync = createAsyncThunk("post/getPosts", async () => {
   try {
     const response = await getPosts()
-    // console.log(response.data)
     return {
       data: response.data,
-      // data: []
     }
   } catch (error) {
     throw error

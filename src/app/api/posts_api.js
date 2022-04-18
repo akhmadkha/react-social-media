@@ -9,6 +9,15 @@ export const getPosts = async () => {
   }
 }
 
+export const getDetailPosts = async (idPost) => {
+  try {
+    const response = await axios.get("posts/"+idPost)
+    return response
+  } catch (error) {
+    throw error
+  }
+}
+
 export const submitPost = async (body) => {
   try {
     const response = await axios.post("posts", body)
