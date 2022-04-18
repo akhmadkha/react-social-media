@@ -54,7 +54,8 @@ export const {create, update, deletePost} = postSlice.actions
 
 export const dataPosts = createSelector(
   (state) => ({
-    data: state.post.data
+    data: state.post.data,
+    status: state.post.status
   }), (state) => state
 )
 
