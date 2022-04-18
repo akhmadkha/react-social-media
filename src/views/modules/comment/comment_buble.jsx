@@ -76,7 +76,7 @@ export default function CommentBubble(props) {
       <div className="flex gap-2 p-1">
         <div className="avatar">
           <div class="w-8 h-8 rounded-full">
-            <img src="https://api.lorem.space/image/face?hash=33791" />
+            <img alt="socialmedia-asset" src={`https://api.lorem.space/image/face?hash=3379${Math.floor(Math.random() * 10)}`} />
           </div>
         </div>
         <div className="flex-1 border rounded-xl bg-gray-100 p-2">

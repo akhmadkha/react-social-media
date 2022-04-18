@@ -6,6 +6,9 @@ import { getPostUser } from "../../../app/api/posts_api";
 import { getAlbumUser } from "../../../app/api/albums_photos_api";
 import TabAlbums from "./tab_albums";
 import TabPost from "./tab_post";
+import { dataPosts } from "../../../app/reducer/post_reducer";
+import { useSelector } from "react-redux";
+import PostingForm from "../../components/posting_form";
 
 const dataTab = [
   {
@@ -23,10 +26,16 @@ export default function UserDetail(props) {
   const [postUser, setpostUser] = useState([]);
   const [albumUser, setalbumUser] = useState([]);
   const {idUser} = useParams()
+  const {data} = useSelector(dataPosts)
 
   useEffect(() => {
-    getDataUser()
-  }, []);
+    if (parseInt(idUser) === 2020) {
+      let posts = data.filter(x => parseInt(x.userId) === 2020) ?? []
+      setpostUser(posts)
+    } else {
+      getDataUser()
+    }
+  }, [data, idUser]);
 
   function getDataUser() {
     getDetailUsers(idUser).then(res => {
@@ -77,10 +86,21 @@ export default function UserDetail(props) {
             <div>
               <div className="avatar">
                 <div class="w-24 h-24 rounded-full">
-                  <img src={`https://api.lorem.space/image/face?hash=3379${idUser}`} />
+                  <img alt="socialmedia-asset" src={`https://api.lorem.space/image/face?hash=3379${idUser}`} />
                 </div>
               </div>
             </div>
+            {
+              parseInt(idUser) === 2020?
+              <div className="flex-1 flex gap-4">
+              <div className="w-1/2 px-8">
+                <p className="text-sm">@userroot</p>
+                <h1 className="text-2xl font-semibold text-primary">User Root</h1>
+                <p className="text-sm">user@root.com</p>
+              </div>
+              <div className="w-1/2"></div>
+            </div>
+            :
             <div className="flex-1 flex gap-4">
               <div className="w-1/2 px-8">
                 <p className="text-sm">@{dataUser?.username}</p>
@@ -89,10 +109,12 @@ export default function UserDetail(props) {
               </div>
               <div className="w-1/2"></div>
             </div>
+            }
           </div>
         </div>
       </div>
-      <div className="w-full">
+      {
+        parseInt(idUser) !== 2020 ? <div className="w-full">
         <div className="flex justify-center items-center">
           <div class="tabs">
             {dataTab.map((val, idx) => {
@@ -110,7 +132,12 @@ export default function UserDetail(props) {
             })}
           </div>
         </div>
-      </div>
+      </div>: null
+      }
+      {
+        parseInt(idUser) === 2020 ?
+        <PostingForm/>: null
+      }
       <div className="pt-10">
         {
           tabActive === 1 ? <TabPost idUser={idUser} data={postUser}/> : null

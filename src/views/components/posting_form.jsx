@@ -47,7 +47,7 @@ export default function PostingForm() {
       <div className="flex gap-4 items-center">
         <div className="avatar">
           <div class="w-10 h-10 rounded-full">
-            <img src="https://api.lorem.space/image/face?hash=33792020" />
+            <img alt="socialmedia-asset" src="https://api.lorem.space/image/face?hash=33792020" />
           </div>
         </div>
         <div className="flex-1">

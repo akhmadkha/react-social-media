@@ -8,7 +8,7 @@ import { useAlert } from "react-alert";
 
 export default function PostCard(props) {
   const { userId, id, title, body } = props;
-  const [loadingUpdate, setloadingUpdate] = useState(false);
+  const [loadingUpdate] = useState(false);
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -138,6 +138,7 @@ export default function PostCard(props) {
           <div className="avatar">
             <div class="w-10 h-10 rounded-full">
               <img
+              alt=""
                 src={"https://api.lorem.space/image/face?hash=3379" + userId}
               />
             </div>

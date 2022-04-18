@@ -27,7 +27,7 @@ export default function TabPhotos(props) {
           </h3>
         </label>
       </label>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {dataPhoto.map((val, idx) => {
           return (
             <label onClick={() => setselectedPhoto(val)} for="modal-preview-photo" className="modal-button cursor-pointer border rounded-lg overflow-hidden max-h-64">

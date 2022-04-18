@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   dataComment,
@@ -17,7 +17,7 @@ export default function CommentBox(props) {
     } else {
       dispatch(getCommentAsync(postId));
     }
-  }, [dispatch]);
+  }, [dispatch, data, postId]);
 
   function renderComment(params) {
     let commentData = params.find((x) => x.postId.toString() === postId);
@@ -28,7 +28,9 @@ export default function CommentBox(props) {
           return <CommentBubble key={idx} {...val} />;
         });
       } else {
-        return <div className="">Tidak ada komen</div>;
+        return <div className="flex w-full">
+          <div className="mx-auto mt-10">Tidak ada komentar</div>
+        </div>;
       }
     }
   }

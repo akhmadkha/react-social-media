@@ -18,7 +18,7 @@ export default function TabPost(props) {
           :null
         }
       </div>
-      <wiv className="w-72">
+      <wiv className="hidden md:block w-72">
         <HomeRightbar/>
       </wiv>
     </div>

@@ -22,8 +22,8 @@ export default function HomeRightbar() {
             <h1 class="mb-5 text-3xl font-bold">
               Hello <br /> teman-teman
             </h1>
-            <p class="mb-5">Jangan lupa follow sosial media saya yang lain:</p>
-            <button class="btn btn-primary">Get Started</button>
+            <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <a href="https://akhmadkha.id" target="_blank" class="btn btn-primary">Get Started</a>
           </div>
         </div>
       </div>

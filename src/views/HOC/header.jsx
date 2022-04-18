@@ -27,21 +27,21 @@ export default function Header() {
   React.useEffect(() => {
     console.log(process.env.REACT_APP_API_URL);
   }, [location]);
-  function changeTheme(e) {
-    const setDark = () => {
-      localStorage.setItem("theme", "myDark");
-      document.documentElement.setAttribute("data-theme", "myDark");
-    };
-    const setLight = () => {
-      localStorage.setItem("theme", "myLight");
-      document.documentElement.setAttribute("data-theme", "myLight");
-    };
-    if (e) {
-      setDark();
-    } else {
-      setLight();
-    }
-  }
+  // function changeTheme(e) {
+  //   const setDark = () => {
+  //     localStorage.setItem("theme", "myDark");
+  //     document.documentElement.setAttribute("data-theme", "myDark");
+  //   };
+  //   const setLight = () => {
+  //     localStorage.setItem("theme", "myLight");
+  //     document.documentElement.setAttribute("data-theme", "myLight");
+  //   };
+  //   if (e) {
+  //     setDark();
+  //   } else {
+  //     setLight();
+  //   }
+  // }
   return (
     <div
       className="w-full border-b fixed z-50 bg-primary-content"
@@ -49,7 +49,8 @@ export default function Header() {
     >
       <div class="navbar max-w-4xl mx-auto bg-base-100">
         <div class="navbar-start">
-          <a class="btn btn-ghost normal-case text-xl">Socialmedia</a>
+          <button class="hidden md:block btn btn-ghost normal-case text-xl">Socialmedia</button>
+          <button class="block md:hidden btn btn-ghost normal-case text-xl">S</button>
         </div>
         <div class="navbar-center gap-4">
           {menu.map((val, idx) => {
@@ -101,10 +102,10 @@ export default function Header() {
               <button class="gap-2 btn btn-ghost">
                 <div className="avatar">
                   <div class="w-10 rounded-full">
-                    <img src="https://api.lorem.space/image/face?hash=33792020" />
+                    <img alt="socialmedia-asset" src="https://api.lorem.space/image/face?hash=33792020" />
                   </div>
                 </div>
-                <p className="truncate">User root</p>
+                <p className="hidden md:block truncate">User root</p>
               </button>
             </label>
             <ul
@@ -112,16 +113,16 @@ export default function Header() {
               class="menu menu-compact dropdown-content mt-3 p-2 border bg-base-100 rounded-lg w-52"
             >
               <li>
-                <a class="justify-between">
+                <Link to="/users/2020" class="justify-between">
                   Profile
                   <span class="badge">New</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <button>Settings</button>
               </li>
               <li>
-                <a>Logout</a>
+                <button>Logout</button>
               </li>
             </ul>
           </div>

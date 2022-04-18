@@ -29,8 +29,8 @@ export default function Post() {
   }, [dispatch]);
 
   return (
-    <div className="flex max-h-screen overflow-hidden">
-      <div className="w-7/12 border-x pt-20 p-4 min-h-screen bg-white">
+    <div className="flex flex-col md:flex-row max-h-screen md:overflow-hidden">
+      <div className="w-full md:w-7/12 border-x pt-20 p-4 md:min-h-screen bg-white">
         <div className="mb-4">
           <button onClick={() => window.history.back()} className="btn btn-ghost gap-2">
             <ArrowLeftIcon className="h-5 w-5"/>
@@ -40,7 +40,7 @@ export default function Post() {
         <div className="flex justify-center">
           <div className="avatar">
             <div class="w-14 h-14 rounded-full">
-              <img src={`https://api.lorem.space/image/face?hash=3379${dataPost.userId ?? "1"}`} />
+              <img alt="socialmedia-asset" src={`https://api.lorem.space/image/face?hash=3379${dataPost.userId ?? "1"}`} />
             </div>
           </div>
           <div className="flex-1 pl-6">
@@ -54,7 +54,7 @@ export default function Post() {
           </p>
         </div>
       </div>
-      <div className="w-5/12 pt-20 border-r">
+      <div className="w-full md:w-5/12 pt-20 border-r">
         <CommentBox postId={idPost}/>
       </div>
     </div>

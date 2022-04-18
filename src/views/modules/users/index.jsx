@@ -44,7 +44,7 @@ export default function Users() {
         </div>
       </div>
       <div className="pt-10">
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           {dataUser.map((val, idx) => {
             return (
               <Link key={idx} to={"/users/" + val.id}>
@@ -52,6 +52,7 @@ export default function Users() {
                   <div className="avatar">
                     <div class="w-10 h-10 rounded-full">
                       <img
+                      alt=""
                         src={`https://api.lorem.space/image/face?hash=3379${val.id}`}
                       />
                     </div>
