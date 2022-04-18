@@ -17,8 +17,9 @@ export default function CommentBox(props) {
     } else {
       dispatch(getCommentAsync(postId));
     }
-  }, [dispatch, data, postId]);
 
+  }, [dispatch]);
+  console.log(data)
   function renderComment(params) {
     let commentData = params.find((x) => x.postId.toString() === postId);
     if (commentData) {
