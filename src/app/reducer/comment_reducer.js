@@ -66,7 +66,7 @@ export const commentSlice = createSlice({
       state.status = "loading"
     })
     .addCase(getCommentAsync.fulfilled, (state, action) => {
-      let existed = state.data.find(x => x.postId.toString() === action.payload.id)
+      let existed = state.data.find(x => x.postId.toString() === action.payload.id.toString())
       let payload = {postId: action.payload.postId, comments: action.payload.data ?? []}
       state.status = "idle"
       if (!existed) {
